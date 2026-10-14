@@ -90,13 +90,13 @@ milestone: MVP
 
 **Yumak** epic'inin **1. story'si** (epic #EPIC). Tema: Altyapı.
 
-**Öncelik:** P1 · **Efor:** M · **Milestone:** MVP · **Dokunduğu yer:** Unity projesi, `MustyCozyCore` UPM bağımlılığı, sahne düzeni, UGS kurulumu
+**Öncelik:** P1 · **Efor:** M · **Milestone:** MVP · **Dokunduğu yer:** Unity projesi, `MustyCozyCore` (`com.mtafasahin.cozycore`, monorepo `mtafasahin-unity-packages`) UPM bağımlılığı, sahne düzeni, UGS kurulumu
 
 ### Kullanıcı hikâyesi
 Bir geliştirici olarak Yumak projesinin ortak paketi (reklam, IAP, UGS, yerelleştirme, ayarlar, günlük hediye iskeleti) ilk günden kullanmasını isterim, böylece oyuna özgü işler (örgü, dolap, avatar) dışında hiçbir altyapıyı yeniden yazmam.
 
 ### Kabul kriterleri
-- [ ] **Senaryo: Temiz kurulum** · Verilen boş bir Unity 2022 LTS projesi · Eğer `MustyCozyCore` paketi git URL ve sürüm etiketiyle eklenirse · O zaman proje derlenir ve `Bootstrap` sahnesi açılınca UGS oturumu (anonim Player Accounts) kurulur.
+- [ ] **Senaryo: Temiz kurulum** · Verilen boş bir Unity 6000.6 projesi · Eğer `MustyCozyCore` paketi git URL ve sürüm etiketiyle eklenirse · O zaman proje derlenir ve `Bootstrap` sahnesi açılınca UGS oturumu (anonim Player Accounts) kurulur.
 - [ ] **Senaryo: Sahne akışı** · Verilen `Bootstrap → Home → Play → Wardrobe` sahneleri · Eğer uygulama açılırsa · O zaman 2 sn içinde Home görünür; geri tuşu Home'da uygulamadan çıkar, Play'de "Çık" onayı sorar, Wardrobe'da Home'a döner.
 - [ ] **Senaryo: Yerelleştirme** · Verilen TR ve EN tabloları · Eğer cihaz dili TR ise · O zaman tüm metinler TR, aksi halde EN; dil Ayarlar'dan değiştirilebilir; proje ve giysi adları tabloda anahtarlıdır (`garment.scarf`, `garment.beanie`).
 - [ ] **Senaryo: Build** · Verilen Android build ayarları · Eğer `release` build alınırsa · O zaman paket adı `com.mtafasahin.yumak`, min SDK 24, 64-bit, boyut < 70 MB (örgü sprite atlası dahil).
@@ -119,22 +119,22 @@ Bir geliştirici olarak Yumak projesinin ortak paketi (reklam, IAP, UGS, yerelle
 
 ### Notlar
 - Core paketi Daily Drop ile olgunlaşmış olmalı; eksik modül varsa (örn. `CollectionScreen`) önce Core'da story açılır, burada efor L'ye çıkar.
-- Karar: Reklam mediation AppLovin MAX (Daily Drop ile aynı); IAP Unity IAP; makbuz doğrulama Core `PremiumGate`'in tüketilemeyen ürün sürümü.
+- Karar: Reklam ağı AdMob (Core ile aynı; MAX adaptörü SONRA, CozyCore 33); IAP Unity IAP; makbuz doğrulama Core `PremiumGate`'in tüketilemeyen ürün sürümü.
 - Hedef kitle 35+ olduğu için varsayılan HUD yazı boyutu Daily Drop'tan 2 pt büyük (18 pt), dokunma hedefleri ≥ 56 px.
 
 ## STORY: Yumak 2: MustyMergePhysics paketini Daily Drop'tan çıkar ve bağla
-labels: tema:backend, P1, efor:L
+labels: tema:backend, P1, efor:M
 milestone: MVP
 
 **Yumak** epic'inin **2. story'si** (epic #EPIC). Tema: Altyapı.
 
-**Öncelik:** P1 · **Efor:** L · **Milestone:** MVP · **Dokunduğu yer:** yeni repo `MustyMergePhysics` (UPM), Daily Drop repo'su (tüketici PR'ı), Yumak `Play` sahnesi
+**Öncelik:** P1 · **Efor:** M · **Milestone:** MVP · **Dokunduğu yer:** monorepo `mtafasahin-unity-packages` içinde `com.mtafasahin.mergephysics` paketi (MergePhysics epic'i), Daily Drop repo'su (tüketici PR'ı), Yumak `Play` sahnesi
 
 ### Kullanıcı hikâyesi
 Bir geliştirici olarak Daily Drop'ta yazdığım bırak-birleştir fizik çekirdeğini (top, birleşme, kap, havuz, taşma tespiti) tek bir pakete çıkarıp hem Daily Drop'un hem Yumak'ın aynı sürümü tüketmesini isterim, böylece fizik hatası tek yerde düzelir ve üçüncü merge oyunu bir günde ayağa kalkar.
 
 ### Kabul kriterleri
-- [ ] **Senaryo: Paket içeriği** · Verilen `com.musty.mergephysics` paketi · Eğer incelenirse · O zaman `Ball`, `BallDefinition` (SO), `BallPool`, `MergeSystem`, `MergeEvent`, `Container`, `OverflowDetector`, `PhysicsProfile` (SO: gravity, iterations, friction, bounciness, drag eğrisi) ve `IMergeRule` arayüzü vardır; oyuna özgü hiçbir sınıf (DailySequence, ScoreSystem, KnitSystem) yoktur.
+- [ ] **Senaryo: Paket içeriği** · Verilen `com.mtafasahin.mergephysics` paketi · Eğer incelenirse · O zaman `MergeBody`, `MergeDefinition` (SO), `MergeDefinitionSet`, `MergePool`, `MergeSystem`, `MergeEvent`, `MergeContainer`, `OverflowDetector`, `DropController`, `PhysicsProfile` (SO: gravity, iterations, friction, bounciness, drag eğrisi) ve `IMergeRule` arayüzü vardır; oyuna özgü hiçbir sınıf (DailySequence, ScoreSystem, KnitSystem) yoktur.
 - [ ] **Senaryo: Daily Drop regresyonu** · Verilen Daily Drop repo'su paketi tüketiyor · Eğer mevcut Play Mode ve Edit Mode testleri çalıştırılırsa · O zaman hepsi geçer ve aynı seed'le 200 düşüşlük bir koşunun skoru paket öncesiyle aynıdır.
 - [ ] **Senaryo: Yumak'ta kurulum** · Verilen Yumak projesi · Eğer paket git URL `#v0.1.0` ile eklenirse · O zaman boş `Play` sahnesinde `Container` + `BallPool` + `MergeSystem` prefab'ı ile 8 kademeli toplar düşer ve birleşir (henüz yün görseli yok).
 - [ ] **Senaryo: Birleşme kuralı genişletme** · Verilen `IMergeRule` uygulaması · Eğer `CanMerge(a, b)` false dönerse · O zaman toplar birleşmez; `OnMerged(a, b, result)` çağrısında `result`'a oyun tarafı bileşen (renk) atanabilir.
@@ -143,20 +143,20 @@ Bir geliştirici olarak Daily Drop'ta yazdığım bırak-birleştir fizik çekir
 - [ ] **Senaryo: Havuz** · Verilen 60 top · Eğer sürekli birleşme ve `Detach` olursa · O zaman `Instantiate/Destroy` yok, GC alloc 0 (Profiler).
 
 ### Teknik görevler (Unity/C#)
-- [ ] Yeni repo `MustyMergePhysics`: `package.json` (`com.musty.mergephysics`, 0.1.0), `Runtime/`, `Editor/`, `Tests/`, asmdef `Musty.MergePhysics`, README (kurulum, `IMergeRule` örneği).
-- [ ] Daily Drop'tan taşı: `Ball`, `BallDefinition`, `BallPool`, `MergeSystem` (mergeLock, aynı kare `HashSet<int>`, birleşme kuyruğu), `Container` (3 statik collider + `EdgeCollider2D` taban + `OverflowLine` child), `OverflowDetector` (hız < 0,05 ve çizgi üstü zamanlayıcı), fizik ayarları → `PhysicsProfile` SO.
-- [ ] Yeni: `IMergeRule { bool CanMerge(Ball a, Ball b); void OnMerged(Ball a, Ball b, Ball result); }` ve varsayılan `SameTierRule`; `MergeSystem.Rule` enjekte edilebilir.
-- [ ] Yeni: `MergeSystem.Detach(Ball)` ve `BallPool.Release(Ball)` ayrımı; `Ball.State` enum {Pooled, Held, Active, Detached}.
-- [ ] Yeni: `Container.SetInnerWidth(float)` (13. story sepet genişletme için collider ve kenarlık yeniden ölçekleme).
-- [ ] Daily Drop PR: paket bağımlılığı, yerel sınıfları sil, testleri paket `Tests/`e taşı, `drop_cooldown_ms` gibi oyun ayarları Daily Drop'ta kalır.
+- [ ] Paket monorepo'da: `com.mtafasahin.mergephysics` (`package.json` 0.1.0, `Runtime/`, `Editor/`, `Tests/`, asmdef `Musty.MergePhysics`, README) — MergePhysics 1 story'si; bu story paketi tüketir, yazmaz.
+- [ ] Daily Drop'tan taşıma MergePhysics 2–10 story'lerinde yapılır (`Ball → MergeBody`, `BallDefinition → MergeDefinition`, `BallPool → MergePool`, `Container → MergeContainer`, `MergeSystem`, `OverflowDetector`, `PhysicsProfile`); bu story o epic'in v0.1.0 tag'ini bekler.
+- [ ] Pakette hazır: `IMergeRule { bool CanMerge(MergeBody a, MergeBody b); void OnMerged(MergeBody a, MergeBody b, MergeBody result); }` ve varsayılan `SameTierRule`; Yumak `ColorMatchRule` yazar (4. story).
+- [ ] Pakette hazır: `MergeSystem.Detach(MergeBody)` ve `MergePool.Release(MergeBody)` ayrımı; `MergeBodyState` {Pooled, Held, Active, Merged, Detached} (MergePhysics 4).
+- [ ] Pakette hazır: `MergeContainer.SetInnerWidth(float)` (13. story sepet genişletme; MergePhysics 5).
+- [ ] Daily Drop PR'ı MergePhysics 10 story'sinde (o epic'te); burada yalnızca Yumak PR'ı.
 - [ ] Yumak PR: paket bağımlılığı, `Play` sahnesinde iskelet prefab'ı, `PhysicsProfile_Yumak` (yün için friction 0.45, bounciness 0.05 — Daily Drop'tan daha "yumuşak").
-- [ ] Edit/Play Mode testleri pakette: birleşme, üçlü temas, taşma zamanlayıcı, `Detach` sonrası taşma tespitinden çıkma.
+- [ ] Yumak tarafı testi: paket tag'i ile `Play` iskeletinde 8 kademe birleşme (duman); paketin kendi testleri MergePhysics epic'inde.
 
 ### Analitik
 - Yok (paket oyun olaylarını bilmez; `MergeEvent` oyun tarafında dinlenir).
 
 ### Notlar
-- Karar: Paket Daily Drop'un soft launch build'i alındıktan sonra çıkarılır; Daily Drop iterasyonunda fizik değeri değişirse yalnızca `PhysicsProfile` SO değişir, kod değişmez.
+- Karar (2026-10-14): Paketi çıkarma işi bu story'den **MergePhysics epic'ine** (monorepo) taşındı; bu story yalnızca Yumak'ı pakete bağlar ve profili ayarlar, efor L → M. Paket Daily Drop'un soft launch build'i alındıktan sonra çıkarılır; Daily Drop iterasyonunda fizik değeri değişirse yalnızca `PhysicsProfile` SO değişir, kod değişmez.
 - Risk: `OverflowDetector`'ın "durağan" eşiği (0,05) ile Yumak'ın olgunlaşma eşiği aynı; ikisi de `PhysicsProfile.restVelocity`'den okunur, iki yerde sabit olmaz.
 - Üçüncü tüketici adayı (Eğik Kavanoz) için `Container` eğim parametresi şimdiden `PhysicsProfile`'a değil ileride ayrı bir `ContainerShape` SO'ya girer; şimdi yapılmaz.
 
@@ -563,7 +563,7 @@ Bir oyuncu olarak sepet dolmaya başlayınca bir reklam izleyip bu turluk sepeti
 - [ ] `NoAdsGate`: Unity IAP tüketilemeyen ürün `no_ads` (3,99 USD, TR yerel kademe); Core `PremiumGate` tüketilemeyen sürümü; makbuz doğrulama Cloud Code; yerel önbellek.
 - [ ] Teklif noktaları: Ayarlar (satır), `RoundEndView` (interstitial gösterilecekse önce küçük "Reklamsız oyna · 3,99 USD" bağlantısı), ilk interstitial'dan sonra bir kez "Reklamları kaldırmak ister misin?" kartı.
 - [ ] Remote Config: `interstitial_daily_cap`, `interstitial_min_gap_s`, `interstitial_min_rounds` (4), `expand_enabled`, `expand_offer_px`.
-- [ ] Test reklam kimlikleri `dev`, gerçek `prod`; AppLovin MAX yerleşimleri: `continue`, `expand` (ödüllü), `round_gap` (interstitial).
+- [ ] Test reklam kimlikleri `dev`, gerçek `prod`; AdMob yerleşimleri (`AdsConfig`): `continue`, `expand` (ödüllü), `round_gap` (interstitial).
 - [ ] Edit Mode testi: `InterstitialPolicy.ShouldShow` tüm koşullar (kota, aralık, ilk turlar, No Ads).
 
 ### Analitik

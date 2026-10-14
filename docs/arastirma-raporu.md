@@ -274,6 +274,13 @@ Her kapı bir sayfalık karar: eşik tutmuyorsa sonraki faza geçmeden önce iki
 
 **Cozy motor (hafta 0–1)**: mevcut oyundan ayrıştır: ödüllü video + interstitial kotası (günde en fazla 3), IAP katalogları, No Ads bayrağı, 15 dil, büyük yazı modu, meta harita ve koleksiyon ekranı, analitik olayları. Mimari: Unity/C# ortak paket (UPM), her oyun ayrı repo; seviye verisi JSON, seviye editörü ortak. Reklam mediation tek entegrasyon; Android önce.
 
+**Ortak motor kararı (14 Ekim 2026, kod envanteri sonrası)**: MustyBlockBlast'ın 30 sistemlik envanteri çıkarıldı (`docs/core-inventory.md`, monorepo). Motor **yeni repo değil**, mevcut monorepo `mtafasahin-unity-packages`'ta iki yeni paket olur ve oyunlar git URL + tag ile tüketir (MustyBlockBlast'ın `com.mtafasahin.reactive` ve `com.mtafasahin.mobileservices`'i tükettiği mekanizma):
+
+- `com.mtafasahin.cozycore` ("CozyCore", epic + 35 story): MBB'den kopyalanan, oyun bilmeyen 10 modül — Abstractions, Ads (AdMob + UMP; ödüllü, interstitial kotası), Iap (Unity IAP 5 + restore, No Ads), Ugs (auth, Remote Config, leaderboard, hesap), Save (PlayerPrefs + Cloud Save çakışma kararı), Localization (15 dil), Settings (Reduce Motion, büyük yazı, haptik), Ui (ilk kez prefab: Ayarlar, consent, ipucu, tutorial eli), Meta (cüzdan, envanter, can, günlük hediye, rozet), Analytics. Fazlar: v0.1 (Daily Drop'u açar) → v0.2 (reklam + IAP) → v0.3 (bulut + lider tablosu) → v0.4 (meta) → v0.5 (bildirim, makbuz doğrulama, MAX adaptörü).
+- `com.mtafasahin.mergephysics` ("MergePhysics", epic + 18 story): bırak-birleştir fizik çekirdeği; MBB'de fizik olmadığı için sıfırdan, Daily Drop'un içinde doğar (story 2–5), soft launch build'inden sonra pakete çıkar; Yumak ve Eğik Kavanoz aynı tag'i tüketir. v0.1 (çıkarma, Daily Drop regresyonu) → v0.2 (kinematik kavanoz, kapsül gövde, replay) → v0.3 (performans bütçesi).
+
+İki düzeltme bu envanterden çıktı: hedef sürüm **Unity 6 (6000.6.x)** (MBB ve paketler bunu ister; "2022 LTS" ifadeleri değiştirildi) ve reklam ağı **AdMob** (Google Mobile Ads 11.5 + UMP, MBB ile aynı; AppLovin MAX adaptörü eCPM verisine göre SONRA). Motorun gerçek takvimi: CozyCore v0.1 + v0.2 ≈ 20 story (çoğu M) ≈ 5–6 hafta solo; yani tablodaki "0–1 hafta" iyimser, Daily Drop motorla paralel yürür ve Daily Drop 1. story CozyCore v0.1'i bekler.
+
 **Daily Drop MVP (hafta 1–3)**: seed'li deterministik sıra, 8 kademeli top seti, günlük sıra, paylaşım kartı (PNG + metin), arkadaş ligi için basit backend, ödüllü video ile ek deneme, Premium abonelik iskeleti. Soft launch: Türkiye, Filipinler ve Kanada'da Android; 2 hafta veri; ölçüm: D1, paylaşım oranı, ortalama oturum.
 
 **Aile Yapbozu MVP (hafta 3–5)**: davet linki, fotoğraf yükleme, 9/16/25 parça, sesli mesaj, 60+ arayüz; aile aboneliği. KVKK/GDPR: şifreli depolama, süreli silme, rıza ekranı.
@@ -283,6 +290,24 @@ Her kapı bir sayfalık karar: eşik tutmuyorsa sonraki faza geçmeden önce iki
 **Dolgu oyunlar ve ASO (hafta 10–12)**: Günün Okeyi ve Nota Sort 2'şer haftalık; ASO döngüsü: her oyunda 3 Custom Product Page (cozy, senior, daily), başlık anahtar kelime testi, ekran görüntüsü A/B.
 
 **25 oyun hedefi için kural**: motor oturduktan sonra ritim 2–3 haftada bir oyun; her 5 oyunda bir "büyük bahis" (Ink Bloom ölçeğinde), aradakiler seri ve dolgu. Klon sayısı 6 ayda 2.000'i geçen Block alt türüne hiç girilmez; her yeni oyun ya yeni bir mekanik ya yeni bir ritüel ya da yeni bir kitle getirir.
+
+## GitHub repoları ve planlama
+
+Her oyun kendi private reposunda; her repoda 1 epic + story'ler (Gherkin kabul kriterleri + teknik görevler), `docs/` altında bu rapor, oyun tasarım dokümanı, tasarım ekranları ve ajan brief'i (`CLAUDE.md`). Ortak paketler monorepo'da.
+
+| Repo | Oyun | Epic + story | Paket / bağımlılık |
+| --- | --- | --- | --- |
+| `mustafa-sahin-tr/mtafasahin-unity-packages` | — (monorepo) | CozyCore #1 + 35 story (#2–#36) · MergePhysics #37 + 18 story (#38–#55) | `com.mtafasahin.cozycore`, `com.mtafasahin.mergephysics` (+ mevcut `reactive`, `mobileservices`) |
+| `MustyDailyDrop` | Daily Drop | #1 + 27 | CozyCore v0.1 → v0.2; MergePhysics burada doğar |
+| `MustyInkBloom` | Ink Bloom | #1 + 24 | CozyCore v0.2 |
+| `MustyAileYapbozu` | Aile Yapbozu | #1 + 26 | CozyCore v0.1 (reklamsız) + Firebase |
+| `MustyYumak` | Yumak | #1 + 24 | CozyCore v0.2 + MergePhysics v0.1 |
+| `MustyNotaSort` | Nota Sort | #1 + 24 | CozyCore v0.2 |
+| `MustyGununOkeyi` | Günün Okeyi | #1 + 23 | CozyCore v0.3 (lider tablosu) |
+| `MustyEgikKavanoz` | Eğik Kavanoz | #1 + 26 | CozyCore v0.2 + MergePhysics v0.2 |
+| `MustyTohum` | Tohum | #1 + 24 | CozyCore v0.4 (meta) |
+
+Toplam: 10 epic, 251 story. Story kaynakları `docs/issues/<oyun>.md` (format `STYLE.md`); issue'lar script ile üretildi ve senkronlanır (`create_issues.py`, `sync_issues.py`). Etkileşimli yol haritası: monorepo `docs/roadmap/` (kapasite ve paralellik ayarlı takvim; canlı sürümün linki aynı klasördeki README'de).
 
 ## Kaynaklar
 
