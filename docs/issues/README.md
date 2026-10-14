@@ -1,0 +1,1 @@
+Bu klasördeki `yumak.md`, GitHub Issues'daki epic ve story'lerin kaynağıdır (format: `STYLE.md`). Issue'lar `create_issues.py` ile üretildi; yeni story eklenecekse önce buraya, sonra GitHub'a yazılır.

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Yumak – Oyun ekranı</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap">
+<style>
+body{margin:0;font-family:'Nunito',system-ui,sans-serif;color:#3B2A1E}
+a{color:#8B5E3C}a:hover{color:#5E3E27}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6EFE6; display: flex; flex-direction: column; padding: 56px 24px 24px; gap: 14px; overflow: hidden">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="font-size: 12px; letter-spacing: 2px; font-weight: 700; color: #9A7B62">SEVİYE 24</div>
+      <div style="font-size: 26px; font-weight: 800; color: #3B2A1E; line-height: 1.1">Kışlık Atkı</div>
+      <div style="font-size: 13px; color: #7A6252">Olgun yumak sepetten çıkar, bir sıra örer</div>
+    </div>
+    <button type="button" aria-label="Dolap, 3 giysi" style="height: 44px; border-radius: 12px; border: 1px solid #E0D2C2; background: #FFFFFF; color: #3B2A1E; font-family: 'Nunito', system-ui, sans-serif; font-size: 13px; font-weight: 800; padding: 0 12px; cursor: pointer; display: flex; align-items: center; gap: 8px">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B2A1E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8 12 4 4 8v12h16z"></path><path d="M12 4v16"></path></svg>
+      Dolap · 3
+    </button>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid #E0D2C2; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span style="font-size: 13px; font-weight: 800">Örgü · 6 / 10 sıra</span>
+      <span style="font-size: 12px; color: #7A6252">4 olgun yumak kaldı</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px" aria-label="Atkı ilerlemesi">
+      <div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #E0A93A"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #E0A93A"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #D97A8C"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #D97A8C"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #7FA886"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #7FA886"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div>
+      <div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #E0A93A"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #E0A93A"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #D97A8C"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #D97A8C"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #7FA886"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #7FA886"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div><div style="height: 14px; border-radius: 7px 7px 3px 3px; background: #EFE4D6"></div>
+    </div>
+  </div>
+
+  <div style="position: relative; height: 430px">
+    <div style="position: absolute; left: 166px; top: 0px; width: 40px; height: 40px; border-radius: 50%; background: #7CA8CF; box-shadow: inset 0 0 0 6px rgba(255,255,255,0.35), inset 0 0 0 12px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 185px; top: 44px; width: 0px; height: 150px; border-left: 2px dotted #C9B6A3"></div>
+
+    <div style="position: absolute; left: 10px; top: 60px; width: 322px; height: 360px; box-sizing: border-box; border: 4px solid #8B5E3C; border-top: none; border-radius: 0 0 48px 48px; background: #EBD9C4"></div>
+    <div style="position: absolute; left: 0px; top: 52px; width: 342px; height: 14px; border-radius: 7px; background: #8B5E3C"></div>
+    <div style="position: absolute; left: 24px; top: 96px; width: 294px; height: 0px; border-top: 2px dashed #B48A66"></div>
+    <div style="position: absolute; right: 24px; top: 78px; font-size: 11px; font-weight: 700; color: #9A7B62">taşma</div>
+
+    <div style="position: absolute; left: 22px; top: 292px; width: 124px; height: 124px; border-radius: 50%; background: #E0A93A; box-shadow: inset 0 0 0 10px rgba(255,255,255,0.3), inset 0 0 0 22px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 150px; top: 318px; width: 98px; height: 98px; border-radius: 50%; background: #D97A8C; box-shadow: inset 0 0 0 9px rgba(255,255,255,0.3), inset 0 0 0 19px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 246px; top: 338px; width: 78px; height: 78px; border-radius: 50%; background: #7FA886; box-shadow: inset 0 0 0 8px rgba(255,255,255,0.3), inset 0 0 0 16px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 118px; top: 262px; width: 60px; height: 60px; border-radius: 50%; background: #7CA8CF; box-shadow: inset 0 0 0 6px rgba(255,255,255,0.3), inset 0 0 0 12px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 212px; top: 282px; width: 56px; height: 56px; border-radius: 50%; background: #8E6BAF; box-shadow: inset 0 0 0 6px rgba(255,255,255,0.3), inset 0 0 0 12px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 60px; top: 236px; width: 48px; height: 48px; border-radius: 50%; background: #D97A8C; box-shadow: inset 0 0 0 5px rgba(255,255,255,0.3), inset 0 0 0 10px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 268px; top: 292px; width: 40px; height: 40px; border-radius: 50%; background: #E0A93A; box-shadow: inset 0 0 0 5px rgba(255,255,255,0.3), inset 0 0 0 10px rgba(0,0,0,0.06)"></div>
+    <div style="position: absolute; left: 176px; top: 226px; width: 36px; height: 36px; border-radius: 50%; background: #7FA886; box-shadow: inset 0 0 0 4px rgba(255,255,255,0.3), inset 0 0 0 8px rgba(0,0,0,0.06)"></div>
+
+    <div style="position: absolute; left: 22px; top: 272px; background: #3B2A1E; color: #FFFFFF; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 4px 10px">olgun · örgüye gidiyor</div>
+    <div style="position: absolute; left: 60px; top: 300px; width: 0px; height: 18px; border-left: 2px solid #3B2A1E"></div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="font-size: 13px; color: #7A6252">Sıradaki</span>
+      <div style="width: 22px; height: 22px; border-radius: 50%; background: #8E6BAF"></div>
+      <div style="width: 18px; height: 18px; border-radius: 50%; background: #E0A93A; opacity: 0.75"></div>
+      <div style="width: 14px; height: 14px; border-radius: 50%; background: #7FA886; opacity: 0.5"></div>
+    </div>
+    <button type="button" style="height: 44px; border-radius: 12px; border: none; background: #3B2A1E; color: #FFFFFF; font-family: 'Nunito', system-ui, sans-serif; font-size: 13px; font-weight: 800; padding: 0 14px; cursor: pointer; display: flex; align-items: center; gap: 8px">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="12" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+      Sepeti genişlet · reklam
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
